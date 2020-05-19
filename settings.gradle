@@ -1,2 +1,5 @@
 rootProject.name='ComponentApp'
 include ':app'
+include ':login'
+include ':share'
+include ':base'
