@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LoginApp</string>
+
+    <string name="login_activity_login_user_name">已登录账号：%s</string>
+</resources>
