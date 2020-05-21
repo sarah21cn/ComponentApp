@@ -46,7 +46,7 @@ public class LoginActivity extends BaseActivity {
 
     // TODO: 2020/5/20 放入 Presenter (MVP) 或 ViewModel (MVVM) 中处理
     private void updateViews(){
-        if(LoginManager.getManager().isLogin()){
+        if(loginManager.isLogin()){
             userNameTv.setVisibility(View.VISIBLE);
             final String userName = loginManager.getLoginUser() != null ? loginManager.getLoginUser().getAccountName() : "";
             userNameTv.setText(getResources().getString(R.string.login_activity_login_user_name, userName));
