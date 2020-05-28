@@ -14,7 +14,6 @@ public abstract class BaseApp extends Application {
         initModulesApp();
     }
 
-    // TODO: 2020/5/21 如何让每个App都必须初始化
     // 默认不需要初始化其他的module，如果模块需要初始化某些module，需要覆盖此成员变量
     public String[] moduleApps = {};
 
@@ -37,11 +36,12 @@ public abstract class BaseApp extends Application {
 
     /**
      * 初始化moduleApps
+     * 如果不覆盖此方法，默认为不进行初始化其他module
      */
     public abstract void initModuleList();
 
     /**
-     * 各Module进行相应的初始化
+     * 各Module注册自己的服务
      * @param application
      */
     public abstract void initModuleServices(Application application);

@@ -38,9 +38,14 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "Boolean", "isRunAlone", isRunAlone
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "Boolean", "isRunAlone", isRunAlone
         }
     }
     compileOptions {

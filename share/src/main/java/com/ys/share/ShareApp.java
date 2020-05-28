@@ -36,9 +36,9 @@ public class ShareApp extends BaseApp {
         ServiceFactory.getServiceFactory().registerService(ServiceFactory.Service.SHARE_SERVICE, new ShareService());
     }
 
-    // TODO: 2020/5/29 获取gradle.properties中的isRunAlone状态
+    // 获取gradle.properties中的isRunAlone状态，自动填入BuildConfig中
     public boolean isRunAlone(){
-        return false;
+        return BuildConfig.isRunAlone;
     }
 
     public boolean isDebug(){
