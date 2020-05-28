@@ -3,18 +3,61 @@ package com.ys.componentapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.ys.base.ServiceFactory;
+import com.ys.base.event.LoginEvent;
 import com.ys.base.service.IAccountService;
+import com.ys.base.utils.EventBusRegisterUtil;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView loginStatus;
+    private Button jumpToLogin;
+    private Button jumpToShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        loginStatus = findViewById(R.id.login_status_tv);
+        jumpToLogin = findViewById(R.id.jump_to_login_btn);
+        jumpToShare = findViewById(R.id.jump_to_share_btn);
+
+        // 使用ARouter实现Activity之间的跳转
+        jumpToLogin.setOnClickListener(v -> ARouter.getInstance().build("/login/login").navigation());
+        jumpToShare.setOnClickListener(v -> ARouter.getInstance().build("/share/share").navigation());
+
+        EventBusRegisterUtil.register(this);
+
+        updateLoginStatus();
+    }
+
+    private void updateLoginStatus(){
         IAccountService accountService = ServiceFactory.getServiceFactory().getService(ServiceFactory.LOGIN_SERVICE);
-        System.out.println(accountService.isLogin());
+        // TODO: 2020/5/28 loginStatus的同步怎么做？EventBus？此处涉及到模块间交互
+        // TODO: 2020/5/28 目前使用EventBus，Event必须注册到base模块，会造成base模块臃肿
+        if(accountService.isLogin()){
+            loginStatus.setText("登录账号：" + accountService.getUserInfo().getAccountName());
+        }else{
+            loginStatus.setText("未登录");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBusRegisterUtil.unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoginEvent(LoginEvent event){
+        updateLoginStatus();
     }
 }

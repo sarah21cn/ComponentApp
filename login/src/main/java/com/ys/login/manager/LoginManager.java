@@ -1,7 +1,7 @@
 package com.ys.login.manager;
 
 import com.ys.base.model.UserInfo;
-import com.ys.login.event.LoginEvent;
+import com.ys.base.event.LoginEvent;
 
 import org.greenrobot.eventbus.EventBus;
 

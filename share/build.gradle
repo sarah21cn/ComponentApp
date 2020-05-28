@@ -19,6 +19,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     sourceSets {
@@ -54,4 +60,5 @@ dependencies {
 
     implementation project(":base")
     runtimeOnly project(":login")
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }

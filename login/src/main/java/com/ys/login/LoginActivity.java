@@ -7,10 +7,11 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ys.base.model.UserInfo;
 import com.ys.base.ui.BaseActivity;
 import com.ys.base.utils.EventBusRegisterUtil;
-import com.ys.login.event.LoginEvent;
+import com.ys.base.event.LoginEvent;
 import com.ys.login.manager.LoginManager;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -19,6 +20,7 @@ import org.greenrobot.eventbus.ThreadMode;
 /**
  * Created by shanyin on 2020/5/20
  */
+@Route(path = "/login/login")
 public class LoginActivity extends BaseActivity {
 
     private TextView userNameTv;

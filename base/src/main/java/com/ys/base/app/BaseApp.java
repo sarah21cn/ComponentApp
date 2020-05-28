@@ -7,6 +7,13 @@ import android.app.Application;
  */
 public abstract class BaseApp extends Application {
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initModuleList();
+        initModulesApp();
+    }
+
     // TODO: 2020/5/21 如何让每个App都必须初始化
     // 默认不需要初始化其他的module，如果模块需要初始化某些module，需要覆盖此成员变量
     public String[] moduleApps = {};
@@ -17,8 +24,7 @@ public abstract class BaseApp extends Application {
             try {
                 Class clazz = Class.forName(moduleApp);
                 BaseApp baseApp = (BaseApp) clazz.newInstance();
-                baseApp.initModuleApp(this);
-                baseApp.initModuleData(this);
+                baseApp.initModuleServices(this);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -38,7 +44,5 @@ public abstract class BaseApp extends Application {
      * 各Module进行相应的初始化
      * @param application
      */
-    public abstract void initModuleApp(Application application);
-
-    public abstract void initModuleData(Application application);
+    public abstract void initModuleServices(Application application);
 }

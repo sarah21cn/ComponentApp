@@ -8,4 +8,6 @@ public class AppConfig {
     // 所有引入的Module
     public static final String LOGIN_APP = "com.ys.login.LoginApp";
 
+    public static final String SHARE_APP = "com.ys.share.ShareApp";
+
 }

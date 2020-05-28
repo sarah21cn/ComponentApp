@@ -13,16 +13,11 @@ public class LoginApp extends BaseApp {
 
     @Override
     public void initModuleList() {
-        // do nothing
+        // 不需要依赖任何模块，do nothing
     }
 
     @Override
-    public void initModuleApp(Application application) {
+    public void initModuleServices(Application application) {
         ServiceFactory.getServiceFactory().registerService(ServiceFactory.LOGIN_SERVICE, new AccountService());
-    }
-
-    @Override
-    public void initModuleData(Application application) {
-
     }
 }
