@@ -26,7 +26,6 @@ public class LoginManager {
 
     public void login(UserInfo user){
         loginUser = user;
-        // TODO: 2020/5/20 发送登录成功的EventBus
         EventBus.getDefault().post(new LoginEvent());
     }
 

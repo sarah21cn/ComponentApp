@@ -30,7 +30,7 @@ public class MainApp extends BaseApp {
 
     @Override
     public void initModuleList() {
-        moduleApps = new String[]{AppConfig.LOGIN_APP, AppConfig.SHARE_APP};
+        moduleApps = new String[]{AppConfig.APP.LOGIN_APP, AppConfig.APP.SHARE_APP};
     }
 
     @Override

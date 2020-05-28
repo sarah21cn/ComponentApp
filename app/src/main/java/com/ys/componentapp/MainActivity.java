@@ -40,9 +40,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateLoginStatus(){
-        IAccountService accountService = ServiceFactory.getServiceFactory().getService(ServiceFactory.LOGIN_SERVICE);
-        // TODO: 2020/5/28 loginStatus的同步怎么做？EventBus？此处涉及到模块间交互
-        // TODO: 2020/5/28 目前使用EventBus，Event必须注册到base模块，会造成base模块臃肿
+        IAccountService accountService = ServiceFactory.getServiceFactory().getService(ServiceFactory.Service.LOGIN_SERVICE);
+        // TODO: 2020/5/28 目前使用EventBus进行模块间数据同步，Event必须注册到base模块，会造成base模块臃肿
         if(accountService.isLogin()){
             loginStatus.setText("登录账号：" + accountService.getUserInfo().getAccountName());
         }else{

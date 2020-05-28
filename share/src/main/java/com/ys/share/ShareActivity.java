@@ -23,7 +23,7 @@ public class ShareActivity extends BaseActivity {
         setContentView(R.layout.share_activity_share);
 
         findViewById(R.id.share_btn).setOnClickListener(v -> {
-            IAccountService accountService = ServiceFactory.getServiceFactory().getService(ServiceFactory.LOGIN_SERVICE);
+            IAccountService accountService = ServiceFactory.getServiceFactory().getService(ServiceFactory.Service.LOGIN_SERVICE);
             if(accountService.isLogin()){
                 // TODO: 2020/5/21 如何获取到登录的账号Cookie信息，可以通过accountservice分享出来
                 // TODO: 2020/5/28 包名不一样，登录信息怎么共用？ 

@@ -18,6 +18,6 @@ public class LoginApp extends BaseApp {
 
     @Override
     public void initModuleServices(Application application) {
-        ServiceFactory.getServiceFactory().registerService(ServiceFactory.LOGIN_SERVICE, new AccountService());
+        ServiceFactory.getServiceFactory().registerService(ServiceFactory.Service.LOGIN_SERVICE, new AccountService());
     }
 }

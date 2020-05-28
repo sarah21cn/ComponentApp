@@ -10,6 +10,6 @@ public class EmptyShareService implements IShareService {
 
     @Override
     public void share(ShareInfo shareInfo) {
-        // TODO: 2020/5/20 抛出异常
+        // do nothing
     }
 }

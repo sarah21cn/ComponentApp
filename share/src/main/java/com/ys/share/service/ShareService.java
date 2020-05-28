@@ -10,6 +10,6 @@ public class ShareService implements IShareService {
 
     @Override
     public void share(ShareInfo shareInfo) {
-        // TODO: 2020/5/20 分享
+        // 真正的分享操作
     }
 }

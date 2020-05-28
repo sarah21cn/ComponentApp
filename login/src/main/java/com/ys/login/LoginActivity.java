@@ -46,7 +46,6 @@ public class LoginActivity extends BaseActivity {
         EventBusRegisterUtil.register(this);
     }
 
-    // TODO: 2020/5/20 放入 Presenter (MVP) 或 ViewModel (MVVM) 中处理
     private void updateViews(){
         if(loginManager.isLogin()){
             userNameTv.setVisibility(View.VISIBLE);
