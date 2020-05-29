@@ -25,7 +25,7 @@ ComponentApp是一个纯组件化项目，主要解决以下问题：
 方案：将每个组件提供的方法抽象成一个service，注册到base模块的ServiceFactory中。其他组件需要使用的时候，可以从base模块中get相应的service使用。
 
 下面是ServiceFactory代码：
-```
+```java
 package com.ys.base;
 
 import androidx.annotation.StringDef;
@@ -80,12 +80,12 @@ public class ServiceFactory {
 
 ### 组件如何单独编译？
 方案：在gradle.properties中添加isRunAlone参数
-```
+```gradle
 # Run as a independent application
 isRunAlone=true
 ```
 在build.gradle中引入判断，如果isRunAlone为true，则编译成一个app，如果isRunAlone为false，编译成一个Library。
-```
+```gradle
 if (isRunAlone.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
@@ -93,7 +93,7 @@ if (isRunAlone.toBoolean()) {
 }
 ```
 由于编译成app和Library的Manifest不一样，需要配置两份Manifest，在build.gradle中指定使用的manifest文件
-```
+```gradle
 sourceSets {
     main {
         if (isRunAlone.toBoolean()) {
@@ -105,7 +105,7 @@ sourceSets {
 }
 ```
 下面是两份Manifest文件：
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ys.componentapp">
@@ -116,7 +116,7 @@ sourceSets {
 
 </manifest>
 ```
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ys.share">
@@ -147,7 +147,7 @@ sourceSets {
 声明一个BaseApp，所有的模块都继承自BaseApp，并且在其中声明自己依赖的模块，以及自己提供的服务。在BaseApp中，反射调用依赖模块的Application方法来注册各依赖模块的服务。
 
 BaseApp代码如下：
-```
+```java
 package com.ys.base.app;
 
 import android.app.Application;
@@ -200,7 +200,7 @@ public abstract class BaseApp extends Application {
 
 #### 如何实现组件间物理隔离，防止意外调用到其他组件方法？
 方案：在build.gradle中使用runtimeOnly方式依赖，只在运行时可用，编译时完全隔离。
-```
+```gradle
 runtimeOnly project(":login")
 runtimeOnly project(":share")
 ```
