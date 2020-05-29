@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ys.share" >
+    package="com.ys.componentapp" >
 
     <application>
-        <activity android:name=".ShareActivity"></activity>
+        <activity android:name="com.ys.share.ShareActivity"></activity>
     </application>
 </manifest>

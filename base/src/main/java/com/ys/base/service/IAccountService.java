@@ -10,4 +10,6 @@ public interface IAccountService {
     boolean isLogin();
 
     UserInfo getUserInfo();
+
+    String getCookie();
 }

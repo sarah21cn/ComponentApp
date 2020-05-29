@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ys.login">
+    package="com.ys.componentapp">
 
     <application>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name="com.ys.login.LoginActivity"></activity>
     </application>
 
 </manifest>
