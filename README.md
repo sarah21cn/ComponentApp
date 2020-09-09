@@ -208,3 +208,4 @@ runtimeOnly project(":share")
 ## 待完善部分
 1. 使用EventBus作组件间数据共享，会导致很多Event下沉到base模块，使得base模块难以维护
 2. 每注册一个组件都需要在ServiceFactory中声明，不够简洁
+3. 使用配置文件的方式来定义需要引用的模块
